@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>更新日志 - Celechron</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-left">
+        <a href="index.html" class="navbar-logo">
+          <img src="img/navbar_logo.png" alt="Celechron" />
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link">首页</a>
+          <a href="changelog.html" class="nav-link active">更新日志</a>
+        </div>
+      </div>
+      <a href="https://github.com/Celechron/Celechron" class="github-link" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="changelog-section">
+      <div class="changelog-header">
+        <h1 class="changelog-title">更新日志</h1>
+        <p class="changelog-subtitle">Celechron 的版本更新记录</p>
+      </div>
+      <div class="changelog-list" id="changelog">
+        <div class="loading">加载中...</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p><a href="https://github.com/Celechron/Celechron"><strong>Celechron</strong></a> 采用 <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0</a> 许可证开源。本网页内容采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a> 协议授权。</p>
+      <p><a href="https://beian.miit.gov.cn/">浙ICP备2024061973号-1</a></p>
+    </div>
+  </footer>
+
+  <script>
+    async function fetchChangelog() {
+      try {
+        const response = await fetch('https://api.github.com/repos/Celechron/Celechron/releases');
+        const releases = await response.json();
+        const container = document.getElementById('changelog');
+
+        if (!releases || releases.length === 0) {
+          container.innerHTML = '<div class="empty">暂无更新记录</div>';
+          return;
+        }
+
+        container.innerHTML = releases.map(release => {
+          const date = new Date(release.published_at).toLocaleDateString('zh-CN', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          });
+
+          const notes = release.body
+            .split('\n')
+            .filter(line => line.trim())
+            .map(line => {
+              if (line.startsWith('##')) {
+                return `<h4 class="change-category">${line.replace('##', '').trim()}</h4>`;
+              }
+              if (line.startsWith('-')) {
+                return `<li class="change-item">${line.replace('-', '').trim()}</li>`;
+              }
+              if (line.match(/^\d+\./)) {
+                return `<li class="change-item">${line.replace(/^\d+\./, '').trim()}</li>`;
+              }
+              return `<p class="change-text">${line}</p>`;
+            })
+            .join('');
+
+          return `
+            <article class="release">
+              <div class="release-header">
+                <span class="release-tag">${release.tag_name || release.name}</span>
+                <time class="release-date">${date}</time>
+              </div>
+              <div class="release-notes">${notes}</div>
+              <a href="${release.html_url}" class="release-link" target="_blank">
+                查看详情 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </article>
+          `;
+        }).join('');
+      } catch (error) {
+        document.getElementById('changelog').innerHTML = '<div class="error">加载失败，请稍后重试</div>';
+      }
+    }
+    fetchChangelog();
+  </script>
+</body>
+</html>

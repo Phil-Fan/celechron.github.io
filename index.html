@@ -1,159 +1,71 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Celechron - 时间管理器</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="css/bulma.min.css"/>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:wght@300&display=swap"
-    />
-  </head>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Celechron - 时间管理器</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
 
-  <body style="min-height: 100vh">
-    <section class="hero is-fullheight" style="background-color: #ffffff">
-      <div class="hero-head">
-        <nav
-          class="navbar"
-          role="navigation"
-          aria-label="main navigation"
-          style="background-color: #ffffff"
-        >
-          <div class="navbar-brand">
-            <a class="navbar-item" href="">
-              <img src="img/navbar_logo.png" height="28" />
-            </a>
-            <a
-              role="button"
-              class="navbar-burger"
-              aria-label="menu"
-              aria-expanded="false"
-              data-target="navbarBasicExample"
-            >
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-            </a>
-          </div>
-
-          <div id="navbarBasicExample" class="navbar-menu">
-            <div class="navbar-start">
-              <a class="navbar-item" href=""> 首页 </a>
-
-              <a class="navbar-item"> 更新日志 </a>
-            </div>
-
-            <div class="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons"></div>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-
-      <div class="hero-body">
-        <div
-          class="has-text-centered"
-          style="width: 70vw; margin: auto; display: inline-block"
-        >
-          <div style="display: flex; justify-content: center">
-            <div style="width: 25%; display: inline-block">
-              <img src="icon.png" />
-            </div>
-            <div style="width: 60%; display: inline-block">
-              <p style="height: 2.5vw"></p>
-              <p
-                class="title"
-                style="
-                  font-size: 8vw;
-                  font-family: 'Fira Sans Extra Condensed', sans-serif;
-                  font-weight: 300;
-                  letter-spacing: 1vw;
-                  color: #66aaf5;
-                "
-              >
-                Celechron
-              </p>
-              <p class="subtitle" style="font-size: 2vw">
-                服务于浙大学生的时间管理器
-              </p>
-            </div>
-          </div>
-          <section class="section" style="background-color: #ffffff">
-            <div class="container has-text-centered">
-              <div class="buttons is-centered">
-                <a
-                  class="button is-primary is-large"
-                  href="https://github.com/Celechron/Celechron"
-                  style="background-color: #66aaf5"
-                >
-                  <i
-                    class="fa fa-github"
-                    style="font-size: 1.5em; margin: 0.15em 0.3em 0 0"
-                  ></i
-                  >前往项目 GitHub 仓库
-                </a>
-              </div>
-              <div class="buttons is-centered">
-                <a
-                  class="button is-primary is-large"
-                  href="https://pub-c965cd1e9874463fb305af000c7fb37e.r2.dev/Celechron-latest.apk"
-                  style="background-color: #66aaf5"
-                >
-                <i
-                        class="fa fa-android"
-                        style="font-size: 1.5em; margin: 0.15em 0.3em 0 0"
-                ></i
-                  >下载 Android 版
-                </a>
-              </div>
-              <div class="buttons is-centered">
-                <a
-                  class="button is-primary is-large"
-                  href="https://testflight.apple.com/join/9Yitx2yG"
-                  style="background-color: #66aaf5"
-                >
-                <i
-                        class="fa fa-apple"
-                        style="font-size: 1.5em; margin: 0.15em 0.3em 0 0"
-                ></i
-                  >下载 iOS 版
-                </a>
-              </div>
-            </div>
-          </section>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-left">
+        <a href="index.html" class="navbar-logo">
+          <img src="img/navbar_logo.png" alt="Celechron" />
+        </a>
+        <div class="nav-links">
+          <a href="index.html" class="nav-link active">首页</a>
+          <a href="changelog.html" class="nav-link">更新日志</a>
         </div>
       </div>
+      <a href="https://github.com/Celechron/Celechron" class="github-link" aria-label="GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
+    </div>
+  </nav>
 
-      <div class="hero-foot" style="background-color: #dddddd">
-        <div class="card-content has-text-centered">
-          <p>
-            <a href="https://github.com/Celechron/Celechron"
-              ><strong>Celechron</strong></a
-            >
-            采用
-            <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0</a>
-            许可证开源。本网页内容采用
-            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-              >CC BY NC SA 4.0</a
-            >
-            协议授权。
-          </p>
-          <p>
-            <a href="https://beian.miit.gov.cn/"
-            >浙ICP备2024061973号-1</a
-            >
-          </p>
-        </div>
+  <main>
+    <section class="hero-section">
+      <img src="img/logo.png" class="app-icon" alt="Celechron">
+      <h1 class="app-title">Celechron</h1>
+      <p class="app-subtitle">服务于浙大学生的时间管理器</p>
+      <p class="app-version" id="version">加载版本...</p>
+      <div class="download-container">
+        <a href="https://pub-c965cd1e9874463fb305af000c7fb37e.r2.dev/Celechron-latest.apk" class="download-card">
+          <i class="fa-brands fa-android"></i>
+          <div class="platform">Android</div>
+          <div class="label">下载 APK</div>
+        </a>
+        <a href="https://apps.apple.com/cn/app/celechron/id6477194529" class="download-card">
+          <i class="fa-brands fa-apple"></i>
+          <div class="platform">iOS</div>
+          <div class="label">应用商店</div>
+        </a>
       </div>
     </section>
-  </body>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p><a href="https://github.com/Celechron/Celechron"><strong>Celechron</strong></a> 采用 <a href="https://www.gnu.org/licenses/gpl-3.0.html">GPL-3.0</a> 许可证开源。本网页内容采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a> 协议授权。</p>
+      <p><a href="https://beian.miit.gov.cn/">浙ICP备2024061973号-1</a></p>
+    </div>
+  </footer>
+
+  <script>
+    async function fetchVersion() {
+      try {
+        const response = await fetch('https://api.github.com/repos/Celechron/Celechron/releases/latest');
+        const data = await response.json();
+        document.getElementById('version').textContent = data.tag_name || data.name || '最新版本';
+      } catch {
+        document.getElementById('version').textContent = 'v1.0.0';
+      }
+    }
+    fetchVersion();
+  </script>
+</body>
 </html>
